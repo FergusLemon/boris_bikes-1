@@ -15,9 +15,8 @@ class DockingStation
     @bikes.pop
   end
 
-  def dock(bike, working_order=true)
+  def dock(bike)
     raise 'This docking station is full' if full?
-    bike.working_order = working_order
     @bikes << bike
   end
 

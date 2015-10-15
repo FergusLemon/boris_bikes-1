@@ -3,17 +3,6 @@ require 'docking_station'
 describe DockingStation do
   let(:bike) {Bike.new}
 
-  # describe 'initialization' do
-  #   subject { DockingStation.new }
-  # end
-  # it { is_expected.to respond_to(:initialize).with(1).argument}
-
-  # it 'allows user to ' do
-  #   capacity = 25
-  #   station = DockingStation.new(capacity)
-  #   expect(subject.capacity).to eq capacity
-  # end
-
   it 'has a default capacity' do
     expect(subject.capacity).to eq DockingStation::DEFAULT_CAPACITY
   end
@@ -38,11 +27,11 @@ describe DockingStation do
     end
   end
 
-  it { is_expected.to respond_to(:dock).with(2).argument }
+  it { is_expected.to respond_to(:dock).with(1).argument }
 
   it 'registers a bike as broken when returned' do
-    subject.dock(bike, false)
-    expect(bike).to_not be_working
+    subject.dock(bike)
+    expect(bike).to be_working
   end
 
   it { is_expected.to respond_to(:bikes)}
