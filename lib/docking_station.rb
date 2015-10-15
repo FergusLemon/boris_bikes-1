@@ -12,21 +12,22 @@ class DockingStation
 
   def release_bike
     raise 'This docking station is empty' if empty?
-    @bikes.pop
+    raise 'This bike is broken' unless bikes.last.working_status
+    bikes.pop
   end
 
   def dock(bike)
     raise 'This docking station is full' if full?
-    @bikes << bike
+    bikes << bike
   end
 
   private
   def full?
-    @bikes.length >= @capacity
+    bikes.length >= capacity
   end
 
   def empty?
-    @bikes.empty?
+    bikes.empty?
   end
 
 end

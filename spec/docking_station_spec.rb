@@ -17,13 +17,20 @@ describe DockingStation do
   it { is_expected.to respond_to(:release_bike)}
 
   describe '#release_bike' do
-    it 'releases a bike when #release_bike is called' do
+    it 'releases a bike when #release_bike is called, so long as the bike is working' do
       subject.dock(bike)
       expect(subject.release_bike).to eq bike
     end
-    it 'expects bike to be #working' do
+
+    it 'raises an error when user tries to release a broken bike' do
+      broken_bike = bike
+      broken_bike.report_broken
+      subject.dock(broken_bike)
+      expect {subject.release_bike}.to raise_error "This bike is broken"
+    end
+    it 'expects bike to be working' do
       subject.dock(bike)
-      expect(subject.release_bike).to be_working
+      expect(subject.release_bike.working_status).to eq true
     end
   end
 

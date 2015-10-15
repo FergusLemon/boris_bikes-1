@@ -1,11 +1,13 @@
 require 'bike'
 
 describe Bike do
-  it { is_expected.to be_working }
+  it 'is expected to be working' do
+  expect(subject.working_status).to eq true
+end
 
-  it 'changes the working status of the specified instance of Bike' do
+  it 'changes the working status of the specified instance of Bike when #report_broken is used' do
     bike = Bike.new
     bike.report_broken
-    expect(bike.working?).to eq false
+    expect(bike.working_status).to eq false
   end
 end
