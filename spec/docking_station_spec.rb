@@ -29,11 +29,6 @@ describe DockingStation do
 
   it { is_expected.to respond_to(:dock).with(1).argument }
 
-  it 'registers a bike as broken when returned' do
-    subject.dock(bike)
-    expect(bike).to be_working
-  end
-
   it { is_expected.to respond_to(:bikes)}
 
   it 'shows me that my bike is docked' do
