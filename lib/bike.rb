@@ -8,4 +8,11 @@ attr_reader :working_status
   def report_broken
     @working_status = false
   end
+
+  private
+
+  def repair
+    @working_status = true
+  end
+
 end

@@ -12,6 +12,11 @@ describe Van do
     expect(subject.bikes).to include(bike)
   end
 
+  it 'raises an error docking a bike when van is full' do
+    Van::DEFAULT_CAPACITY.times{subject.dock([bike])}
+    expect {subject.dock([bike])}.to raise_error("This docking station is full")
+  end
+
   it { is_expected.to respond_to(:release_broken_bikes) }
 
   it 'releases broken bikes from the bikes array' do
