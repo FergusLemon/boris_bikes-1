@@ -1,5 +1,7 @@
+require_relative 'bike'
 class Van
   attr_reader :bikes
+
 
   def initialize
     @bikes = []
@@ -16,7 +18,7 @@ class Van
   private
 
   def get_broken
-    bikes.select { |bike| !bike.working_status }
+    bikes.select { |bike| !bike.working_status }.each { |bike| bikes.delete(bike) }
   end
 
 end
