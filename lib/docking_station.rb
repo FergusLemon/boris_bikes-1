@@ -10,15 +10,19 @@ class DockingStation
     @capacity = capacity
   end
 
+  def dock(bike)
+    raise 'This docking station is full' if full?
+    bikes << bike
+  end
+
   def release_bike
     raise 'This docking station is empty' if empty?
     raise 'This bike is broken' unless bikes.last.working_status
     bikes.pop
   end
 
-  def dock(bike)
-    raise 'This docking station is full' if full?
-    bikes << bike
+  def release_broken_bikes
+    get_broken
   end
 
   private
@@ -28,6 +32,10 @@ class DockingStation
 
   def empty?
     bikes.empty?
+  end
+
+  def get_broken
+    bikes.select { |bike| !bike.working_status }.each { |bike| bikes.delete(bike) }
   end
 
 end

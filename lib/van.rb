@@ -8,7 +8,7 @@ class Van
   end
 
   def dock(bike)
-    bikes << bike
+    bike.each { |i| bikes << i }
   end
 
   def release_broken_bikes
