@@ -9,8 +9,14 @@ class Van
     bikes << bike
   end
 
-  def release_bike
-    bikes.pop
+  def release_broken_bikes
+    get_broken
+  end
+
+  private
+
+  def get_broken
+    bikes.select { |bike| !bike.working_status }
   end
 
 end
