@@ -9,4 +9,8 @@ class Van
     bikes << bike
   end
 
+  def release_bike
+    bikes.pop
+  end
+
 end

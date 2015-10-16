@@ -12,4 +12,10 @@ describe Van do
     expect(subject.bikes).to include(bike)
   end
 
+  it { is_expected.to respond_to(:release_bike) }
+
+  it 'releases a bike from the end of the array' do
+    subject.dock(bike)
+    expect(subject.release_bike).to eq bike
+  end
 end
